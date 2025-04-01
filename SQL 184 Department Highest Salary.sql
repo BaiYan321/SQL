@@ -8,4 +8,14 @@ FROM
     ) AS a
 INNER JOIN Department AS d
 ON a.DepartmentId = d.Id
-WHERE a.salary_rank = 1
+WHERE a.salary_rank = 1;
+
+SELECT a.Name, a.highest_salary, d.department
+FROM
+    (
+    SELECT Name, DepartmentId, MAX(Salary)
+    FROM Employee
+    GROUP BY DepartmentId
+    ) AS a
+INNER JOIN Department AS d
+ON a.DepartmentId = d.Id;

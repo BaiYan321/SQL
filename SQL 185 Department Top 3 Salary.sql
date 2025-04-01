@@ -9,4 +9,4 @@ FROM
 INNER JOIN Department AS d
 ON a.DepartmentId = d.Id
 WHERE a.salary_rank in (1,2,3)
--- WHERE a.salary_rank <=3
+-- WHERE a.salary_rank <=3;

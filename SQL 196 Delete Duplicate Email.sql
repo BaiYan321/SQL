@@ -7,3 +7,10 @@ SELECT Email, dense_rank() OVER (PARTITION BY Email ORDER BY Id ASC) as d_rank
 FROM Person
 ) AS a
 WHERE a.d_rank=1;
+
+SELECT Email, min(Id)
+FROM Person
+GROUP BY Email;
+
+delete from person where id not in
+(SELECT a.id FROM (SELECT min(Id) from person group by email) a);
