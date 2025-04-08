@@ -18,7 +18,7 @@ AND CTE.min_date = Activity.event_date;
 SELECT a.player_id, a.device
 FROM
 (
-    SELECT player_id, event_date, device
+    SELECT player_id, event_date, device,
     dense_rank() OVER(PARTITION BY player_id ORDER BY event_date ASC) AS d_rank
     FROM Activity
 ) AS A

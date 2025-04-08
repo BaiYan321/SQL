@@ -29,17 +29,18 @@ SELECT
 );
 
 -- Method 2
-SELECT (
-SELECT COUNT(DISTINCT a.player_id)
-FROM
+SELECT 
 (
-    SELECT player_id, event_date, 
-        dense_rank() OVER (PARTITION BY player_id ORDER BY event_date ASC) AS d_rank,
-        lead(event_date, 1) OVER (PARTITION BY player_id) AS Second_day
-    FROM  Activity
-) AS a
-WHERE a.event_date = a.Second_day
-AND a.d_rank = 2
+    SELECT COUNT(DISTINCT a.player_id)
+    FROM
+    (
+        SELECT player_id, event_date, 
+            dense_rank() OVER (PARTITION BY player_id ORDER BY event_date ASC) AS d_rank,
+            lead(event_date, 1) OVER (PARTITION BY player_id) AS Second_day
+        FROM  Activity
+    ) AS a
+    WHERE a.event_date = a.Second_day
+    AND a.d_rank = 2
 )
 /
 (

@@ -8,7 +8,7 @@ FROM
       Id,
       DATE,
       temperature,
-      lag(temperature, 1) OVER (ORDER BYrecoredDate) AS previous_temp
+      lag(temperature, 1) OVER (ORDER BY recoredDate) AS previous_temp
     FROM
       weather
   ) AS a
