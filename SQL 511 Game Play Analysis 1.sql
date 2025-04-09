@@ -1,0 +1,5 @@
+-- https://www.bilibili.com/video/BV11U4y1L7SE?spm_id_from=333.788.recommend_more_video.2&vd_source=eae2c885960bda71fb3bd248c305cdbf
+
+SELECT player_id, MIN(event_date)
+FROM Activity
+GROUP BY player_id;

@@ -1,0 +1,8 @@
+-- https://www.bilibili.com/video/BV1VY411b7Po?spm_id_from=333.788.player.player_end_recommend_autoplay&vd_source=eae2c885960bda71fb3bd248c305cdbf
+
+SELECT e.name, b.bonous
+FROM Employee e
+LEFT JOIN bonus bEmployee
+ON e.empId = b.empId
+WHERE b.bonous < 1000
+OR b.bonous = null
